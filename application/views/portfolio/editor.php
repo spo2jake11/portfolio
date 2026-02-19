@@ -2,7 +2,7 @@
     <h2 class='text-center'>EDIT YOUR CONTENT HERE!!!</h2>
 
     <section class='my-5 px-5 container-sm'>
-        <form action="Custom/do_upload" method="post" class='mb-3' enctype="multipart/form-data">
+        <form action="<?= base_url('Editor/do_upload') ?>" method="post" class='mb-3' enctype="multipart/form-data">
             <!-- Input for title -->
             <label for="title" class='form-label mx-3'>Title</label>
             <input type="text" name="title" id="title" placeholder='Title' class='form-control mx-3 mb-3'>
@@ -41,7 +41,7 @@
     </section>
 
     <section class="container my-5">
-
+        <h3 class="mb-4">Projects</h3>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -63,6 +63,64 @@
                         </td>
                     </tr>
                 <?php endforeach; ?>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="container my-5">
+        <h3 class="mb-4">Skills Management</h3>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Add New Skill</h5>
+                <form action="<?= base_url('Editor/addSkill') ?>" method="post" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="skill_name" class="form-label">Skill Name</label>
+                        <input type="text" name="skill_name" id="skill_name" class="form-control" placeholder="e.g., PHP" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="skill_logo" class="form-label">Logo Path</label>
+                        <input type="text" name="skill_logo" id="skill_logo" class="form-control" placeholder="/assets/logo/LOGO_php.svg" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="skill_percent" class="form-label">Percentage</label>
+                        <input type="number" name="skill_percent" id="skill_percent" class="form-control" min="0" max="100" placeholder="85" required>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Add Skill</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Logo</th>
+                    <th>Percentage</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($skills)): ?>
+                    <?php foreach ($skills as $skill): ?>
+                        <tr>
+                            <td><?= $skill['id'] ?></td>
+                            <td><?= htmlspecialchars($skill['language']) ?></td>
+                            <td><code><?= htmlspecialchars($skill['logo']) ?></code></td>
+                            <td><?= htmlspecialchars($skill['prof']) ?>%</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger mx-1" onclick="deleteSkill(<?= $skill['id'] ?>)">Delete</button>
+                                <button class="btn btn-sm btn-primary mx-1" onclick="editSkill(<?= $skill['id'] ?>, '<?= htmlspecialchars($skill['language'], ENT_QUOTES) ?>', '<?= htmlspecialchars($skill['logo'], ENT_QUOTES) ?>', <?= $skill['prof'] ?>)">Edit</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5" class="text-center">No skills added yet. Add your first skill above!</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </section>
@@ -119,15 +177,66 @@
         document.getElementById('tag_list').value = tagList.join(',');
     });
 
-    // Function to handle project deletion. It prompts the user for confirmation and if confirmed, it redirects to the deleteProject method of the Custom controller with the project ID as a parameter.
+    // Function to handle project deletion. It prompts the user for confirmation and if confirmed, it redirects to the deleteProject method of the Editor controller with the project ID as a parameter.
     function deleteProject(id) {
         if (confirm('Are you sure you want to delete this project?')) {
-            window.location.href = 'Editor/deleteProject/' + id;
+            window.location.href = '<?= base_url('Editor/deleteProject/') ?>' + id;
         }
     }
 
     // Function to handle project editing. It redirects to the editProject method of the Editor controller with the project ID as a parameter.
     function editProject(id) {
-        window.location.href = 'Editor/editProject/' + id;
+        window.location.href = '<?= base_url('Editor/editProject/') ?>' + id;
+    }
+
+    // Function to handle skill deletion
+    function deleteSkill(id) {
+        if (confirm('Are you sure you want to delete this skill?')) {
+            window.location.href = '<?= base_url('Editor/deleteSkill/') ?>' + id;
+        }
+    }
+
+    // Function to handle skill editing - shows modal with form
+    function editSkill(id, name, logo, percent) {
+        const modal = document.createElement('div');
+        modal.className = 'modal fade';
+        modal.id = 'editSkillModal';
+        modal.innerHTML = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Skill</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <form action="<?= base_url('Editor/updateSkill') ?>" method="post">
+                        <div class="modal-body">
+                            <input type="hidden" name="skill_id" value="${id}">
+                            <div class="mb-3">
+                                <label for="edit_skill_name" class="form-label">Skill Name</label>
+                                <input type="text" name="skill_name" id="edit_skill_name" class="form-control" value="${name}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit_skill_logo" class="form-label">Logo Path</label>
+                                <input type="text" name="skill_logo" id="edit_skill_logo" class="form-control" value="${logo}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit_skill_percent" class="form-label">Percentage</label>
+                                <input type="number" name="skill_percent" id="edit_skill_percent" class="form-control" min="0" max="100" value="${percent}" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Update Skill</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        const bsModal = new bootstrap.Modal(modal);
+        bsModal.show();
+        modal.addEventListener('hidden.bs.modal', function() {
+            modal.remove();
+        });
     }
 </script>

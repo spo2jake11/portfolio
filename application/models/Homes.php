@@ -13,4 +13,10 @@ class Homes extends CI_Model
                 ->get('posts');
         return $query->result_array();
     }
+
+    public function getSkills()
+    {
+        $query = $this->db->order_by('id', 'ASC')->get('skills');
+        return $query->result_array();
+    }
 }

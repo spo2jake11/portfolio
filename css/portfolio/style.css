@@ -71,6 +71,43 @@ body {
 	color: #1c0f13;
 }
 
+@media (max-width: 768px) {
+	#home {
+		display: block !important;
+	}
+	
+	.home-image,
+	.home-text {
+		width: 100% !important;
+	}
+}
+
+@media (max-width: 425px) {
+	#skills .list-inline {
+		gap: 0.5rem !important;
+		max-width: 100%;
+	}
+	
+	.badge-flip {
+		margin: 0.25rem !important;
+		flex: 0 0 calc(50% - 0.75rem) !important;
+		max-width: calc(50% - 0.75rem) !important;
+		width: calc(50% - 0.75rem) !important;
+	}
+	
+	.badge-flip.list-inline-item {
+		margin: 0.25rem !important;
+		flex: 0 0 calc(50% - 0.75rem) !important;
+		max-width: calc(50% - 0.75rem) !important;
+		width: calc(50% - 0.75rem) !important;
+	}
+	
+	.badge-flip-inner {
+		min-width: 100% !important;
+		width: 100% !important;
+	}
+}
+
 @media (max-width: 786px) {
 	li.list-inline-item > span {
 		display: none;

@@ -13,9 +13,8 @@ class Editor extends CI_Controller
     // This method is responsible for loading the editor view and passing the project data to it. It first checks if the editor view file exists, and if not, it shows a 404 error. Then it retrieves the project data from the database using the getProjects method of the Editors model and stores it in the $data array. Finally, it loads the header, editor, editor_table, and footer views, passing the project data to the editor_table view.
     public function index()
     {
-        
-
         $data['projects'] = $this->Editors->getProjects();
+        $data['skills'] = $this->Editors->getSkills();
         $this->load->view('portfolio/template/header');
         $this->load->view('portfolio/editor', $data);
         // $this->load->view('portfolio/template/footer');
@@ -103,6 +102,38 @@ class Editor extends CI_Controller
 
         // print_r($data);
         $this->Editors->updateProject($id, $data);
+        redirect('custom');
+    }
+
+    public function addSkill()
+    {
+        $data = array(
+            'language' => $this->input->post('skill_name', true),
+            'logo' => $this->input->post('skill_logo', true),
+            'prof' => $this->input->post('skill_percent', true),
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")
+        );
+        $this->Editors->addSkill($data);
+        redirect('custom');
+    }
+
+    public function updateSkill()
+    {
+        $id = $this->input->post('skill_id', true);
+        $data = array(
+            'language' => $this->input->post('skill_name', true),
+            'logo' => $this->input->post('skill_logo', true),
+            'prof' => $this->input->post('skill_percent', true),
+            'updated_at' => date("Y-m-d H:i:s")
+        );
+        $this->Editors->updateSkill($id, $data);
+        redirect('custom');
+    }
+
+    public function deleteSkill($id)
+    {
+        $this->Editors->deleteSkill($id);
         redirect('custom');
     }
 }

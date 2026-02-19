@@ -39,4 +39,33 @@ class Editors extends CI_Model
     {
         return $this->db->delete('posts', array('id' => $id));
     }
+
+    // Skills management methods
+    public function getSkills()
+    {
+        $query = $this->db->order_by('id', 'ASC')->get('skills');
+        return $query->result_array();
+    }
+
+    public function addSkill($data)
+    {
+        return $this->db->insert('skills', $data);
+    }
+
+    public function updateSkill($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('skills', $data);
+    }
+
+    public function deleteSkill($id)
+    {
+        return $this->db->delete('skills', array('id' => $id));
+    }
+
+    public function getSkill($id)
+    {
+        $query = $this->db->get_where('skills', array('id' => $id));
+        return $query->row_array();
+    }
 }
