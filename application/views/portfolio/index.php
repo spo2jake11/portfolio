@@ -15,6 +15,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
+                    </li>
                     <li class="nav-item divider d-none d-lg-block">
                         <span>||</span>
                     </li>
@@ -29,34 +30,49 @@
 </header>
 
 
-<section class="container-fluid p-3 pt-5 mx-auto d-flex justify-content-center align-items-center" id="home">
-    <div class="home-image">
+<section class="container-fluid p-3 pt-5 mx-auto d-flex flex-column flex-md-row justify-content-center align-items-center min-vh-90" id="home">
+    <div class="home-image w-100 w-md-50">
         <img src="<?= base_url('assets/images/prof.jpg') ?>" alt="Profile Picture" class="img-fluid rounded-circle w-50 mx-auto d-block m-4 shadow">
 
     </div>
-    <div class="home-text">
+    <div class="home-text w-100 w-md-50">
         <h1 class="display-1 text-center">Hello, I'm Jake!</h1>
         <p class="text-center display-6">I'm a website developer with experience in backend development, now taking the challenge of frontend development, eventually becoming a full-stack developer.</p>
     </div>
 </section>
 
-<section id="about" class="container-fluid p-3 py-5 mx-auto">
-    <h2 class="display-4 text-center mb-4">About Me</h2>
-    <article class="mx-5">
-        <p class="lead text-center">I am a student of STI College Dasmarinas in the Bachelor of Science in Information Technology program. I mostly build back-end systems and applications using PHP for website and Java and C# for desktop applications. My past time is playing games like Valorant and watching animes and J-drama. I won second place at STI's "Into Prog", a Java programming competition.</p>
-    </article>
-    <article class="mx-5">
-        <p class="lead text-center">I am currently taking the challenge of learning frontend development, and I am excited to see where this journey takes me. I am passionate about creating user-friendly and visually appealing websites, and I am eager to apply my skills and knowledge to real-world projects.</p>
-    </article>
+<section id="about" class="container-fluid p-3 pt-5 mx-auto d-flex justify-content-center align-items-center min-vh-90">
+    <div class="container px-4 py-5">
+        <h2 class="display-4 text-center mb-5">About Me</h2>
+        <div class="row g-4">
+            <article class="col-12 col-md-4">
+                <div class="about-card h-100 p-4 rounded shadow-sm">
+                    <h3 class="about-category fw-semibold fs-4 text-center mb-3 pb-2">Education</h3>
+                    <p class="lead text-center mb-0">I am a student of STI College Dasmarinas in the Bachelor of Science in Information Technology program. I won second place at STI's "Into Prog", a Java programming competition.</p>
+                </div>
+            </article>
+            <article class="col-12 col-md-4">
+                <div class="about-card h-100 p-4 rounded shadow-sm">
+                    <h3 class="about-category fw-semibold fs-4 text-center mb-3 pb-2">Background</h3>
+                    <p class="lead text-center mb-0">I mostly build back-end systems and applications using PHP for website and Java and C# for desktop applications. I am currently taking the challenge of learning frontend development, and I am excited to see where this journey takes me.</p>
+                </div>
+            </article>
+            <article class="col-12 col-md-4">
+                <div class="about-card h-100 p-4 rounded shadow-sm">
+                    <h3 class="about-category fw-semibold fs-4 text-center mb-3 pb-2">Saying</h3>
+                    <p class="lead text-center mb-0">I am passionate about creating user-friendly and visually appealing websites, and I am eager to apply my skills and knowledge to real-world projects. My past time is playing games like Valorant and watching animes and J-drama.</p>
+                </div>
+            </article>
+        </div>
+    </div>
 </section>
 
-<section id="skills" class="container-fluid py-5">
+<section id="skills" class="container-fluid p-3 pt-5 mx-auto d-flex justify-content-center align-items-center min-vh-90">
+    <div class="container px-4 py-5">
+        <h2 class="display-4 text-center mb-5">My Skills</h2>
     <article>
-        <h2 class="display-5 text-center">My Skills</h2>
-        <div class="container-sm mx-auto my-auto">
-            <ul
-                class="list-inline mx-auto my-3 d-flex flex-wrap justify-content-center"
-                style="font-size: 1.4em">
+        <div class="container-sm">
+            <ul class="list-inline mx-auto my-3 d-flex flex-wrap justify-content-center gap-3 fs-4">
                 <li class="badge-flip list-inline-item badge bg-info m-2 px-2">
                     <div class="badge-flip-inner">
                         <div class="badge-flip-front">
@@ -67,8 +83,13 @@
                                 class="img-fluid m-1" />
                         </div>
                         <div class="badge-flip-back">
-
-                            <span class="skill-percent">PHP || 85%</span>
+                            <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                                <div class="skill-name fw-semibold small text-white text-center">PHP</div>
+                                <div class="progress-bar-wrapper w-90">
+                                    <div class="progress-bar" data-percent="85"></div>
+                                </div>
+                                <div class="skill-percent fw-bold text-white text-center">85%</div>
+                            </div>
                         </div>
                     </div>
 
@@ -84,8 +105,13 @@
                                 class="img-fluid m-1" />
                         </div>
                         <div class="badge-flip-back">
-
-                            <span class="skill-percent">HTML || 85%</span>
+                            <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                                <div class="skill-name fw-semibold small text-white text-center">HTML</div>
+                                <div class="progress-bar-wrapper w-90">
+                                    <div class="progress-bar" data-percent="85"></div>
+                                </div>
+                                <div class="skill-percent fw-bold text-white text-center">85%</div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -100,8 +126,13 @@
                                 class="img-fluid m-1" />
                         </div>
                         <div class="badge-flip-back">
-
-                            <span class="skill-percent">CSS || 85%</span>
+                            <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                                <div class="skill-name fw-semibold small text-white text-center">CSS</div>
+                                <div class="progress-bar-wrapper w-90">
+                                    <div class="progress-bar" data-percent="40"></div>
+                                </div>
+                                <div class="skill-percent fw-bold text-white text-center">40%</div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -117,8 +148,13 @@
                                 class="img-fluid m-1" />
                         </div>
                         <div class="badge-flip-back">
-
-                            <span class="skill-percent">JavaScript || 85%</span>
+                            <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                                <div class="skill-name fw-semibold small text-white text-center">JavaScript</div>
+                                <div class="progress-bar-wrapper w-90">
+                                    <div class="progress-bar" data-percent="85"></div>
+                                </div>
+                                <div class="skill-percent fw-bold text-white text-center">85%</div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -133,8 +169,13 @@
                                 class="img-fluid m-1" />
                         </div>
                         <div class="badge-flip-back">
-
-                            <span class="skill-percent">Java || 85%</span>
+                            <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                                <div class="skill-name fw-semibold small text-white text-center">Java</div>
+                                <div class="progress-bar-wrapper w-90">
+                                    <div class="progress-bar" data-percent="85"></div>
+                                </div>
+                                <div class="skill-percent fw-bold text-white text-center">85%</div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -149,8 +190,13 @@
                             class="img-fluid m-1" />
                     </div>
                     <div class="badge-flip-back">
-
-                        <span class="skill-percent">C# || 85%</span>
+                        <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                            <div class="skill-name fw-semibold small text-white text-center">C#</div>
+                            <div class="progress-bar-wrapper w-90">
+                                <div class="progress-bar" data-percent="85"></div>
+                            </div>
+                            <div class="skill-percent fw-bold text-white text-center">85%</div>
+                        </div>
                     </div>
         </div>
         </li>
@@ -165,8 +211,13 @@
                         class="img-fluid m-1" />
                 </div>
                 <div class="badge-flip-back">
-
-                    <span class="skill-percent">CodeIgniter || 85%</span>
+                    <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                        <div class="skill-name fw-semibold small text-white text-center">CodeIgniter</div>
+                        <div class="progress-bar-wrapper w-90">
+                            <div class="progress-bar" data-percent="85"></div>
+                        </div>
+                        <div class="skill-percent fw-bold text-white text-center">85%</div>
+                    </div>
                 </div>
             </div>
         </li>
@@ -181,8 +232,13 @@
                         class="img-fluid m-1" />
                 </div>
                 <div class="badge-flip-back">
-
-                    <span class="skill-percent">Bootstrap || 85%</span>
+                    <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                        <div class="skill-name fw-semibold small text-white text-center">Bootstrap</div>
+                        <div class="progress-bar-wrapper w-90">
+                            <div class="progress-bar" data-percent="85"></div>
+                        </div>
+                        <div class="skill-percent fw-bold text-white text-center">85%</div>
+                    </div>
                 </div>
             </div>
         </li>
@@ -197,7 +253,13 @@
                         class="img-fluid m-1" />
                 </div>
                 <div class="badge-flip-back">
-                    <span class="skill-percent">MySQL || 85%</span>
+                    <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                        <div class="skill-name fw-semibold small text-white text-center">MySQL</div>
+                        <div class="progress-bar-wrapper w-90">
+                            <div class="progress-bar" data-percent="85"></div>
+                        </div>
+                        <div class="skill-percent fw-bold text-white text-center">85%</div>
+                    </div>
                 </div>
             </div>
         </li>
@@ -212,13 +274,20 @@
                         class="img-fluid m-1" />
                 </div>
                 <div class="badge-flip-back">
-                    <span class="skill-percent">MongoDB || 85%</span>
+                    <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                        <div class="skill-name fw-semibold small text-white text-center">MongoDB</div>
+                        <div class="progress-bar-wrapper w-90">
+                            <div class="progress-bar" data-percent="85"></div>
+                        </div>
+                        <div class="skill-percent fw-bold text-white text-center">85%</div>
+                    </div>
                 </div>
             </div>
         </li>
         </ul>
         </div>
     </article>
+    </div>
 </section>
 
 
@@ -246,6 +315,27 @@
         }, observerOptions);
 
         items.forEach(item => observer.observe(item));
+
+        // Animate progress bars when card flips to show back
+        const badgeFlips = document.querySelectorAll('.badge-flip');
+        badgeFlips.forEach(badge => {
+            const progressBar = badge.querySelector('.progress-bar');
+            if (progressBar) {
+                const percent = progressBar.getAttribute('data-percent');
+                
+                badge.addEventListener('mouseenter', function() {
+                    // Reset and animate progress bar when hovering
+                    progressBar.style.width = '0%';
+                    setTimeout(() => {
+                        progressBar.style.width = percent + '%';
+                    }, 50);
+                });
+                
+                badge.addEventListener('mouseleave', function() {
+                    progressBar.style.width = '0%';
+                });
+            }
+        });
     });
 </script>
 

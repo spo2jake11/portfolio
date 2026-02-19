@@ -24,6 +24,30 @@ body {
 	background-color: #b7cece;
 }
 
+/* Bootstrap utility extension */
+.min-vh-90 {
+	min-height: 90vh;
+}
+
+.w-90 {
+	width: 90%;
+}
+
+.about-card {
+	background-color: rgba(255, 255, 255, 0.3);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.about-category {
+	color: #1c0f13;
+	border-bottom: 2px solid #68b0ab;
+}
+
 #skills {
 	background-color: #e2e2e2;
 }
@@ -39,7 +63,6 @@ body {
 }
 
 #home {
-	flex-wrap: wrap;
 	background-image: linear-gradient(135deg, #b7cece, #bbbac6);
 }
 
@@ -48,21 +71,9 @@ body {
 	color: #1c0f13;
 }
 
-.home-image,
-.home-text {
-	width: 100%;
-}
-
 @media (max-width: 786px) {
 	li.list-inline-item > span {
 		display: none;
-	}
-}
-
-@media (min-width: 992px) {
-	.home-image,
-	.home-text {
-		width: 50%;
 	}
 }
 
@@ -115,10 +126,75 @@ body {
 	transform: rotateY(180deg);
 }
 
-div.card {
+/* Progress bar styles */
+.skill-progress-container {
+	width: 100%;
+}
+
+.w-90 {
+	width: 90%;
+}
+
+.progress-bar-wrapper {
+	height: 8px;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+}
+
+.progress-bar {
+	height: 100%;
+	background: linear-gradient(90deg, 
+		#ff0000 0%, 
+		#ff7f00 14.3%, 
+		#ffff00 28.6%, 
+		#00ff00 42.9%, 
+		#0000ff 57.2%, 
+		#4b0082 71.5%, 
+		#9400d3 85.8%, 
+		#ff0000 100%);
+	background-size: 200% 100%;
+	border-radius: 10px;
+	width: 0%;
+	transition: width 0.8s ease-out;
+	position: relative;
+	animation: rainbow-shift 3s linear infinite;
+}
+
+@keyframes rainbow-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 200% 50%;
+	}
+}
+
+.progress-bar::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+	animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+
+#projects .card {
 	background: #e2e2e2;
 	border: 1px solid #bbbac6;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* container must clip overflow so image doesn't escape */
