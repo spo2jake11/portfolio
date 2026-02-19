@@ -1,0 +1,132 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image: linear-gradient(#000b58, #003161, #006a67);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: "Courier New", monospace;
+	min-height: 100vh;
+}
+
+.calc {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgba(26, 26, 26, 0.8);
+	border-radius: 15px;
+	padding: 10px;
+}
+
+/* Calculator Container */
+input[name="screen"],
+input[name="answer"] {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+/* Display Screen */
+.display {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+input#screen {
+	width: 100%;
+	font-size: 2em;
+	height: 60px;
+	border: none;
+	border-radius: 8px 8px 0 0;
+	padding: 15px;
+	background-color: #1a1a1a;
+	color: #00ff00;
+	text-align: right;
+	font-weight: bold;
+	box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+input#answer {
+	width: 100%;
+	font-size: 1.5em;
+	height: 60px;
+	border: none;
+	border-radius: 0 0 0 0;
+	padding: 12px;
+	background-color: #0d0d0d;
+	color: #00cc00;
+	text-align: right;
+	font-weight: bold;
+	box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+	margin-bottom: 0;
+}
+
+/* Button Grid */
+.column_one,
+.column_two,
+.column_three,
+.column_four {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 10px;
+	padding: 15px;
+	background-color: #2a2a2a;
+}
+
+.column_two,
+.column_three {
+	box-shadow: none;
+}
+
+.column_four {
+	border-radius: 0 8px 8px 0;
+	box-shadow: none;
+}
+
+/* .column_one {
+    border-radius: 0 0 0 0;
+} */
+
+.column_four {
+	border-radius: 0 0 15px 15px;
+}
+
+/* Buttons */
+button {
+	min-width: 60px;
+	aspect-ratio: 1;
+	font-size: 1.2em;
+	font-weight: bold;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	background-color: #404040;
+	color: #ffffff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+	background-color: #505050;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+button:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+button#expand:active {
+	rotate: calc(90deg);
+}

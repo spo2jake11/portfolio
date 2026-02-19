@@ -1,0 +1,164 @@
+header {
+	background-color: #1c0f13;
+}
+
+header .nav-link,
+.nav-item span,
+header .navbar-toggler .navbar-toggler-icon,
+header .navbar-brand {
+	color: #e2e2e2;
+}
+
+header .nav-link:hover,
+header .nav-link:focus {
+	color: #b7cece;
+}
+
+body {
+	background-color: #e2e2e2;
+	margin: 0;
+}
+
+#about {
+	scroll-margin-top: 6em;
+	background-color: #b7cece;
+}
+
+#skills {
+	background-color: #e2e2e2;
+}
+
+#projects {
+	scroll-margin-top: 6em;
+	background-color: #bbbac6;
+}
+
+.bg-info {
+	background-color: #68b0ab !important;
+	color: white !important;
+}
+
+#home {
+	flex-wrap: wrap;
+	background-image: linear-gradient(135deg, #b7cece, #bbbac6);
+}
+
+#home h1,
+#home p {
+	color: #1c0f13;
+}
+
+.home-image,
+.home-text {
+	width: 100%;
+}
+
+@media (max-width: 786px) {
+	li.list-inline-item > span {
+		display: none;
+	}
+}
+
+@media (min-width: 992px) {
+	.home-image,
+	.home-text {
+		width: 50%;
+	}
+}
+
+/* Scroll animation styles */
+.list-inline-item {
+	opacity: 0;
+	transform: translateX(-50px);
+	transition: all 1.5s ease-out;
+}
+
+.list-inline-item.in-view {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.list-inline-item.out-of-view {
+	opacity: 0;
+	transform: translateX(100px);
+}
+
+.badge-flip {
+	perspective: 1000px;
+}
+
+.badge-flip-inner {
+	position: relative;
+	min-width: 140px;
+	min-height: 100px;
+	transition: transform 0.6s;
+	transform-style: preserve-3d;
+}
+
+.badge-flip:hover .badge-flip-inner,
+.badge-flip:focus .badge-flip-inner {
+	transform: rotateY(180deg);
+}
+
+.badge-flip-front,
+.badge-flip-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.badge-flip-back {
+	transform: rotateY(180deg);
+}
+
+div.card {
+	background: #e2e2e2;
+	border: 1px solid #bbbac6;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* container must clip overflow so image doesn't escape */
+.project-thumb {
+	overflow: hidden;
+	position: relative;
+	height: 300px;
+	/* adjust to your card height */
+}
+
+/* img fills the container and stays centered */
+.project-thumb img {
+	max-width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+	display: inline-block;
+	transition: transform 0.6s ease;
+	/* smooth zoom */
+	transform-origin: center center;
+	will-change: transform;
+}
+
+/* zoom on hover / focus / touch */
+.project-thumb:hover img,
+.project-thumb:focus-within img {
+	transform: scale(1.12);
+	/* adjust scale (1.05–1.3) */
+}
+
+.card-link {
+	background: #1c0f13;
+	color: #e2e2e2;
+}
+
+.card-link:hover {
+	background: #6e7e85;
+}
+
+.bg-danger {
+	background: #6e7e85 !important;
+	color: white;
+}
