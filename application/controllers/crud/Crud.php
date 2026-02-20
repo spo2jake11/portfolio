@@ -17,7 +17,7 @@ class Crud extends CI_Controller
             redirect('home');
         }
 
-        $data['title'] = 'Login Page';
+        $data['title'] = 'Welcome to Nightboard';
 
         $this->load->view('crud/template/header', $data);
         $this->load->view('crud/login/index');

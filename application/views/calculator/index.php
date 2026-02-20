@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="<?= base_url('css/calculator/style.css') ?>" />
+    <link rel="shortcut icon" href="<?= base_url('/assets/icons/calc.svg')?>" type="image/x-icon">
     <title>Calculator</title>
 </head>
 

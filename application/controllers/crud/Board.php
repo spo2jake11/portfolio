@@ -13,7 +13,7 @@ class Board extends CI_Controller
         if (!$this->session->userdata('is_logged_in')) {
             redirect('crud');
         }
-        $title['title'] = 'Welcome to BREADS';
+        $title['title'] = 'Nightboards';
         $data['threads'] = $this->Boards->get_threads();
         $this->session->unset_userdata('current_thread_id');
 

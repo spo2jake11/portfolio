@@ -48,7 +48,17 @@
             <article class="col-12 col-md-6 col-lg-4">
                 <div class="about-card h-100 p-4 rounded shadow-sm">
                     <h3 class="about-category fw-semibold fs-4 text-center mb-3 pb-2">Education</h3>
-                    <p class="lead text-center mb-0">I am a student of STI College Dasmarinas in the Bachelor of Science in Information Technology program. I won second place at STI's "Into Prog", a Java programming competition.</p>
+                    <ul class="list-unstyled lead">
+                        <li>STI College Dasmarinas (2022-present)
+                            <ul>
+                                <li>Bachelor of Science in Information Technology</li>
+                                <li>Second Place -- "Into Prog" Programming Competition</li>
+                            </ul>
+                        </li>
+                        <li>Pag-asa National High School (2012-2015)
+
+                        </li>
+                    </ul>
                 </div>
             </article>
             <article class="col-12 col-md-6 col-lg-4">

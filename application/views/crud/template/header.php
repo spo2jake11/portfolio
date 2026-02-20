@@ -16,6 +16,7 @@
     <title><?= $title ?></title>
     <!-- SweetAlert2 with Bootstrap 5 dark theme (official dark theme) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
+    <link rel="shortcut icon" href="<?= base_url('/assets/icons/blog.svg') ?>" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 

@@ -4,12 +4,6 @@
 <main class="form-signin container d-flex flex-row align-items-center justify-content-center p-4">
 	<form action="<?= base_url('validate') ?>" method="post" id="loginForm" class="w-50" style="min-width: 0;">
 		<input type="hidden" name="data" />
-		<img
-			class="mb-4"
-			src="<?= base_url('assets/icons/grok.png') ?>"
-			alt=""
-			width="72"
-			height="57" />
 
 		<h1 class="h3 mb-3 fw-normal">Sign In</h1>
 
@@ -46,7 +40,12 @@
 		<p class="mt-5 mb-3 text-body-secondary text-center">© 2026</p>
 	</form>
 	<aside class="w-75 mx-2 text-center">
-		<h3 class="mb-3">Welcome to NightBoard</h3>
+		<h3 class="mb-3">Welcome to <img
+				class="mb-4 img-fluid"
+				src="<?= base_url('/assets/icons/night.png') ?>"
+				alt=""
+				style="max-width: 50%;" />
+		</h3>
 		<p>A simple message board for users to share their thoughts and ideas.</p>
 		<p>Login or create an account to get started.</p>
 	</aside>
