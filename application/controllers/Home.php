@@ -12,4 +12,5 @@ class Home extends CI_Controller
         $this->load->view('portfolio/content', $data);
         $this->load->view('portfolio/template/footer');
     }
+    
 }

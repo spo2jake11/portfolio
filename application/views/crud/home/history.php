@@ -5,7 +5,7 @@
         <h1>Your Posts</h1>
         <article id="cards_recent">
             <?php foreach ($threads as $thread): ?>
-                <a class="card mb-3 mx-5" style="max-height: 20vh;" href="<?= base_url($thread['slug']) ?>">
+                <a class="card mb-3 mx-5" style="min-height: 20vh;" href="<?= base_url($thread['slug']) ?>">
 
                     <div class="card-body mb-4">
                         <div class="row">
@@ -20,12 +20,10 @@
                                 <h5 class="card-title" id="card-title"><?= $thread['title'] ?></h5>
                             </div>
                         </div>
-                        <p class="card-text"><?= $thread['content'] ?></p>
-                        <!-- <div id="counter">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text-fill" viewBox="0 0 16 16">
-                                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z" />
-                                </svg> <?= $thread['total_comments_replies'] ?></span>
-                        </div> -->
+                        <div class="text-truncate">
+
+                            <p class="card-text"><?= $thread['content'] ?></p>
+                        </div>
                     </div>
                 </a>
             <?php endforeach; ?>

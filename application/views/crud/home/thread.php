@@ -1,7 +1,7 @@
 <?php
 $thread_active = isset($thread->active) ? (int) $thread->active : 1;
 $thread_user_id = isset($thread->user_id) ? $thread->user_id : null;
-$is_thread_owner = $this->session->userdawta('is_logged_in') && $thread_user_id !== null && (int) $this->session->userdata('id') === (int) $thread_user_id;
+$is_thread_owner = $this->session->userdata('is_logged_in') && $thread_user_id !== null && (int) $this->session->userdata('id') === (int) $thread_user_id;
 $can_post = $thread_active === 1 && $this->session->userdata('is_logged_in');
 ?>
 <main class="container py-5 rounded-3 my-2" id="main-content">

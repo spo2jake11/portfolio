@@ -61,7 +61,7 @@
                 <div class="about-card h-100 p-4 rounded shadow-sm">
                     <h3 class="about-category fw-semibold fs-4 text-center mb-3 pb-2">Saying</h3>
                     <p class="lead text-center fst-italic mb-0">
-                        "It is easy to find reason to cry, but it takes strength to find reason to smile."
+                        "Life is a race, but that doesn't mean you have to do it alone."
                     </p>
                 </div>
             </article>
@@ -71,7 +71,7 @@
 
 <section id="skills" class="container-fluid p-3 pt-5 mx-auto d-flex justify-content-center align-items-center min-vh-90">
     <div class="container px-4 py-5">
-        <h2 class="display-4 text-center mb-5">Languages and Proficiency</h2>
+        <h2 class="display-4 text-center mb-5">Skills and Proficiency</h2>
     <article>
         <div class="container-sm">
             <ul class="list-inline mx-auto my-3 d-flex flex-wrap justify-content-center gap-3 fs-4">

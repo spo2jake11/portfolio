@@ -9,16 +9,15 @@
 </head>
 
 <body>
-    <section class="calc">
-        <div class="display">
-            <input type="text" name="screen" id="screen" onkeydown="preventKey(event)" />
-            <input
-                type="text"
-                name="answer"
-                id="answer"
-                readonly
-                disabled />
-        </div>
+    <div class="title text-light">
+        <h1 class="">Simple Calculator</h1>
+    </div>
+    <div class="calculator-wrapper">
+        <section class="calc">
+            <div class="display">
+                <input type="text" name="screen" id="screen" readonly tabindex="-1" aria-label="Expression" onkeydown="preventKey(event)" />
+                <input type="text" name="answer" id="answer" readonly tabindex="-1" aria-label="Result" onkeydown="preventKey(event)" />
+            </div>
 
         <div class="column_one">
             <button>7</button>
@@ -44,11 +43,20 @@
         <div class="column_four">
             <button>0</button>
             <button>.</button>
-            <button>ANS</button>
+            <button id="negate">±</button>
             <button id="expand">&#8644;</button>
             <button>=</button>
         </div>
-    </section>
+        </section>
+        <aside class="calc-history" id="calcHistory" aria-hidden="true">
+            <div class="history-header">
+                <h3 class="history-title">History</h3>
+                <button type="button" class="history-clear" id="historyClear" title="Clear history">Clear</button>
+            </div>
+            <ul class="history-list" id="historyList"></ul>
+            <p class="history-empty" id="historyEmpty">No calculations yet.</p>
+        </aside>
+    </div>
 </body>
 <script src="<?= base_url('js/calculator/script.js') ?> "></script>
 
