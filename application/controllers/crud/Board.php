@@ -37,9 +37,11 @@ class Board extends CI_Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         );
-        $this->Boards->add_thread($data['info']);
-        // print_r($data['info']);
-
+        if ($this->Boards->add_thread($data['info'])) {
+            $this->session->set_flashdata('success', 'Thread created successfully.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to create thread. Please try again.');
+        }
         redirect('home');
     }
 
@@ -105,7 +107,11 @@ class Board extends CI_Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         );
-        $this->Boards->add_comment($data['info']);
+        if ($this->Boards->add_comment($data['info'])) {
+            $this->session->set_flashdata('success', 'Comment posted.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to post comment. Please try again.');
+        }
         redirect($thread->slug);
     }
 
@@ -129,7 +135,11 @@ class Board extends CI_Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         );
-        $this->Boards->add_reply($data['info']);
+        if ($this->Boards->add_reply($data['info'])) {
+            $this->session->set_flashdata('success', 'Reply posted.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to post reply. Please try again.');
+        }
         redirect($thread->slug);
     }
 
@@ -147,7 +157,11 @@ class Board extends CI_Controller
             }
 
             $data = array('content' => $new, 'updated_at' => date('Y-m-d H:i:s'));
-            $this->Boards->update_comment($comment_id, $data);
+            if ($this->Boards->update_comment($comment_id, $data)) {
+                $this->session->set_flashdata('success', 'Comment updated.');
+            } else {
+                $this->session->set_flashdata('error', 'Failed to update comment.');
+            }
             $thread = $this->Boards->get_thread_by_id($thread_id);
             redirect($thread ? $thread->slug : 'home');
             return;
@@ -169,7 +183,11 @@ class Board extends CI_Controller
             }
 
             $data = array('content' => $new, 'updated_at' => date('Y-m-d H:i:s'));
-            $this->Boards->update_reply($reply_id, $data);
+            if ($this->Boards->update_reply($reply_id, $data)) {
+                $this->session->set_flashdata('success', 'Reply updated.');
+            } else {
+                $this->session->set_flashdata('error', 'Failed to update reply.');
+            }
             $thread = $this->Boards->get_thread_by_id($thread_id);
             redirect($thread ? $thread->slug : 'home');
             return;
@@ -189,7 +207,11 @@ class Board extends CI_Controller
             redirect($thread ? $thread->slug : 'home');
             return;
         }
-        $this->Boards->delete_reply($reply_id);
+        if ($this->Boards->delete_reply($reply_id)) {
+            $this->session->set_flashdata('success', 'Reply removed.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to remove reply.');
+        }
         $thread = $this->Boards->get_thread_by_id($thread_id);
         redirect($thread ? $thread->slug : 'home');
     }
@@ -206,7 +228,11 @@ class Board extends CI_Controller
             redirect($thread ? $thread->slug : 'home');
             return;
         }
-        $this->Boards->delete_comment($comment_id);
+        if ($this->Boards->delete_comment($comment_id)) {
+            $this->session->set_flashdata('success', 'Comment removed.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to remove comment.');
+        }
         $thread = $this->Boards->get_thread_by_id($thread_id);
         redirect($thread ? $thread->slug : 'home');
     }
@@ -222,7 +248,11 @@ class Board extends CI_Controller
             redirect($thread ? $thread->slug : 'home');
             return;
         }
-        $this->Boards->delete_thread($thread_id);
+        if ($this->Boards->delete_thread($thread_id)) {
+            $this->session->set_flashdata('success', 'Thread closed.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to close thread.');
+        }
         $slug = $thread->slug;
         redirect($slug);
     }
@@ -245,12 +275,16 @@ class Board extends CI_Controller
         $title = $this->input->post('title', true);
         $content = $this->input->post('content', true);
         $slug = url_title($title, 'dash', true);
-        $this->Boards->update_thread($thread_id, array(
+        if ($this->Boards->update_thread($thread_id, array(
             'title' => $title,
             'content' => $content,
             'slug' => $slug,
             'updated_at' => date('Y-m-d H:i:s')
-        ));
+        ))) {
+            $this->session->set_flashdata('success', 'Thread updated.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to update thread.');
+        }
         redirect($slug);
     }
 

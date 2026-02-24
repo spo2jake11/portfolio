@@ -71,12 +71,20 @@ class Editor extends CI_Controller
             'updated_by' => date("Y-m-d H:i:s")
         );
 
-        $this->Editors->addProjectItem($data);
+        if ($this->Editors->addProjectItem($data)) {
+            $this->session->set_flashdata('success', 'Project added successfully.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to add project. Please try again.');
+        }
         redirect('custom');
     }
 
     public function deleteProject($id){
-        $this->Editors->deleteProject($id);
+        if ($this->Editors->deleteProject($id)) {
+            $this->session->set_flashdata('success', 'Project deleted.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to delete project.');
+        }
         redirect('custom');
     }
 
@@ -100,8 +108,11 @@ class Editor extends CI_Controller
             'updated_by' => date("Y-m-d H:i:s")
         );
 
-        // print_r($data);
-        $this->Editors->updateProject($id, $data);
+        if ($this->Editors->updateProject($id, $data)) {
+            $this->session->set_flashdata('success', 'Project updated.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to update project.');
+        }
         redirect('custom');
     }
 
@@ -114,7 +125,11 @@ class Editor extends CI_Controller
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         );
-        $this->Editors->addSkill($data);
+        if ($this->Editors->addSkill($data)) {
+            $this->session->set_flashdata('success', 'Skill added.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to add skill.');
+        }
         redirect('custom');
     }
 
@@ -127,13 +142,21 @@ class Editor extends CI_Controller
             'prof' => $this->input->post('skill_percent', true),
             'updated_at' => date("Y-m-d H:i:s")
         );
-        $this->Editors->updateSkill($id, $data);
+        if ($this->Editors->updateSkill($id, $data)) {
+            $this->session->set_flashdata('success', 'Skill updated.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to update skill.');
+        }
         redirect('custom');
     }
 
     public function deleteSkill($id)
     {
-        $this->Editors->deleteSkill($id);
+        if ($this->Editors->deleteSkill($id)) {
+            $this->session->set_flashdata('success', 'Skill deleted.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to delete skill.');
+        }
         redirect('custom');
     }
 }

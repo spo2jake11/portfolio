@@ -238,4 +238,33 @@
             modal.remove();
         });
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if ($this->session->flashdata('success')): ?>
+            (function() {
+                const msg = <?= json_encode($this->session->flashdata('success')) ?>;
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'success',
+                    title: msg,
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            })();
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('error')): ?>
+            (function() {
+                const msg = <?= json_encode($this->session->flashdata('error')) ?>;
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: msg,
+                    showConfirmButton: false,
+                    timer: 4000
+                });
+            })();
+        <?php endif; ?>
+    });
 </script>

@@ -22,6 +22,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
                     </li>
+                    <li class="nav-item divider d-none d-lg-block">
+                        <span>||</span>
+                    </li>
+                    <li>
+                        <a class="mx-auto text-decoration-none text-center btn btn-primary" href="<?=  base_url('/assets/pdf/Resume_Villanueva.pdf')?>" target="_blank">Download my resume</a>
+                    </li>
 
                 </ul>
             </div>
@@ -38,6 +44,7 @@
     <div class="home-text w-100 w-md-50 mx-auto">
         <h1 class="display-1 text-center">Hello, I'm Jake!</h1>
         <p class="text-center display-6">I'm a website developer with experience in backend development, now taking the challenge of frontend development, eventually becoming a full-stack developer.</p>
+        
     </div>
 </section>
 
@@ -69,7 +76,7 @@
             </article>
             <article class="col-12 col-md-6 col-lg-4">
                 <div class="about-card h-100 p-4 rounded shadow-sm">
-                    <h3 class="about-category fw-semibold fs-4 text-center mb-3 pb-2">Saying</h3>
+                    <h3 class="about-category fw-semibold fs-4 text-center mb-3 pb-2">Quote</h3>
                     <p class="lead text-center fst-italic mb-0">
                         "Life is a race, but that doesn't mean you have to do it alone."
                     </p>
@@ -82,39 +89,39 @@
 <section id="skills" class="container-fluid p-3 pt-5 mx-auto d-flex justify-content-center align-items-center min-vh-90">
     <div class="container px-4 py-5">
         <h2 class="display-4 text-center mb-5">Skills and Proficiency</h2>
-    <article>
-        <div class="container-sm">
-            <ul class="list-inline mx-auto my-3 d-flex flex-wrap justify-content-center gap-3 fs-4">
-                <?php if (!empty($skills)): ?>
-                    <?php foreach ($skills as $skill): ?>
-                        <li class="badge-flip list-inline-item badge bg-info m-2 px-2">
-                            <div class="badge-flip-inner">
-                                <div class="badge-flip-front">
-                                    <img
-                                        src="<?= base_url($skill['logo']) ?>"
-                                        alt="<?= htmlspecialchars($skill['language']) ?>"
-                                        class="img-fluid m-1 skill-logo-img" />
-                                </div>
-                                <div class="badge-flip-back">
-                                    <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
-                                        <div class="skill-name fw-semibold small text-white text-center"><?= htmlspecialchars($skill['language']) ?></div>
-                                        <div class="progress-bar-wrapper w-90">
-                                            <div class="progress-bar" data-percent="<?= (int)$skill['prof'] ?>"></div>
+        <article>
+            <div class="container-sm">
+                <ul class="list-inline mx-auto my-3 d-flex flex-wrap justify-content-center gap-3 fs-4">
+                    <?php if (!empty($skills)): ?>
+                        <?php foreach ($skills as $skill): ?>
+                            <li class="badge-flip list-inline-item badge bg-info m-2 px-2">
+                                <div class="badge-flip-inner">
+                                    <div class="badge-flip-front">
+                                        <img
+                                            src="<?= base_url($skill['logo']) ?>"
+                                            alt="<?= htmlspecialchars($skill['language']) ?>"
+                                            class="img-fluid m-1 skill-logo-img" />
+                                    </div>
+                                    <div class="badge-flip-back">
+                                        <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">
+                                            <div class="skill-name fw-semibold small text-white text-center"><?= htmlspecialchars($skill['language']) ?></div>
+                                            <div class="progress-bar-wrapper w-90">
+                                                <div class="progress-bar" data-percent="<?= (int)$skill['prof'] ?>"></div>
+                                            </div>
+                                            <div class="skill-percent fw-bold text-white text-center"><?= (int)$skill['prof'] ?>%</div>
                                         </div>
-                                        <div class="skill-percent fw-bold text-white text-center"><?= (int)$skill['prof'] ?>%</div>
                                     </div>
                                 </div>
-                            </div>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <li class="list-inline-item">
+                            <p class="text-center text-muted">No skills added yet. Add skills in the customize page!</p>
                         </li>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <li class="list-inline-item">
-                        <p class="text-center text-muted">No skills added yet. Add skills in the customize page!</p>
-                    </li>
-                <?php endif; ?>
-            </ul>
-        </div>
-    </article>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </article>
     </div>
 </section>
 
@@ -150,7 +157,7 @@
             const progressBar = badge.querySelector('.progress-bar');
             if (progressBar) {
                 const percent = progressBar.getAttribute('data-percent');
-                
+
                 badge.addEventListener('mouseenter', function() {
                     // Reset and animate progress bar when hovering
                     progressBar.style.width = '0%';
@@ -158,7 +165,7 @@
                         progressBar.style.width = percent + '%';
                     }, 50);
                 });
-                
+
                 badge.addEventListener('mouseleave', function() {
                     progressBar.style.width = '0%';
                 });
@@ -166,5 +173,3 @@
         });
     });
 </script>
-
-

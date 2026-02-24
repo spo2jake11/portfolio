@@ -8,5 +8,7 @@
     <link rel="stylesheet" href="<?=  base_url('/css/portfolio/style.css') ?>">
     <link rel="shortcut icon" href="<?=  base_url('/assets/icons/portfolio.svg') ?>" type="image/x-icon">
     <title>Jake's Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="container-fluid px-0 d-flex flex-column min-vh-100">

@@ -10,7 +10,14 @@ class Editors extends CI_Model
     // Add a new project to the database
     public function addProjectItem($data)
     {
-        return $this->db->insert('posts', $data);
+        $this->db->trans_begin();
+        $this->db->insert('posts', $data);
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        }
+        $this->db->trans_commit();
+        return true;
     }
 
     // Retrieve all projects from the database
@@ -30,14 +37,28 @@ class Editors extends CI_Model
     // Update a project by ID
     public function updateProject($id, $data)
     {
+        $this->db->trans_begin();
         $this->db->where('id', $id);
-        return $this->db->update('posts', $data);
+        $this->db->update('posts', $data);
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        }
+        $this->db->trans_commit();
+        return true;
     }
 
     // Delete a project by ID
     public function deleteProject($id)
     {
-        return $this->db->delete('posts', array('id' => $id));
+        $this->db->trans_begin();
+        $this->db->delete('posts', array('id' => $id));
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        }
+        $this->db->trans_commit();
+        return true;
     }
 
     // Skills management methods
@@ -49,18 +70,39 @@ class Editors extends CI_Model
 
     public function addSkill($data)
     {
-        return $this->db->insert('skills', $data);
+        $this->db->trans_begin();
+        $this->db->insert('skills', $data);
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        }
+        $this->db->trans_commit();
+        return true;
     }
 
     public function updateSkill($id, $data)
     {
+        $this->db->trans_begin();
         $this->db->where('id', $id);
-        return $this->db->update('skills', $data);
+        $this->db->update('skills', $data);
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        }
+        $this->db->trans_commit();
+        return true;
     }
 
     public function deleteSkill($id)
     {
-        return $this->db->delete('skills', array('id' => $id));
+        $this->db->trans_begin();
+        $this->db->delete('skills', array('id' => $id));
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        }
+        $this->db->trans_commit();
+        return true;
     }
 
     public function getSkill($id)

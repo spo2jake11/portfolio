@@ -11,7 +11,14 @@ class Boards extends CI_Model
 
     public function add_thread($data)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->insert('threads', $data);
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function get_threads()
@@ -51,8 +58,15 @@ class Boards extends CI_Model
 
     public function update_thread($thread_id, $data)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->where('id', $thread_id)
             ->update('threads', $data);
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function get_comments($thread_id)
@@ -61,7 +75,6 @@ class Boards extends CI_Model
             ->from('comments')
             ->join('users', 'comments.user_id = users.id')
             ->where('comments.thread_id', $thread_id)
-            ->where('comments.active', 1)
             ->order_by('comments.created_at', 'DESC')
             ->get();
         return $query->result_array();
@@ -81,7 +94,14 @@ class Boards extends CI_Model
 
     public function add_comment($data)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->insert('comments', $data);
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function get_comment($comment_id)
@@ -104,37 +124,79 @@ class Boards extends CI_Model
 
     public function update_comment($comment_id, $data)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->where('id', $comment_id)
             ->update('comments', $data);
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function update_reply($reply_id, $data)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->where('id', $reply_id)
             ->update('replies', $data);
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function add_reply($data)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->insert('replies', $data);
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function delete_reply($reply_id)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->where('id', $reply_id)
             ->update('replies', array('active' => 0));
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function delete_comment($comment_id)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->where('id', $comment_id)
             ->update('comments', array('content' => 'Comment has been deleted', 'active' => 0));
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function delete_thread($thread_id)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->where('id', $thread_id)
             ->update('threads', array('active' => 0));
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
+        return true;
     }
 
     public function get_user_threads($user_id)

@@ -27,7 +27,13 @@ class Logins extends CI_Model
 
     public function register_user($data)
     {
+        $this->db_crud->trans_begin();
         $this->db_crud->insert('users', $data);
+        if ($this->db_crud->trans_status() === FALSE) {
+            $this->db_crud->trans_rollback();
+            return false;
+        }
+        $this->db_crud->trans_commit();
         return $this->db_crud->insert_id();
     }
 
