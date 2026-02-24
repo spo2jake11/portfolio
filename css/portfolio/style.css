@@ -275,3 +275,43 @@ body {
 	background: #6e7e85 !important;
 	color: white;
 }
+
+/* Skill logo in flip badge (index) */
+.badge-flip-front .skill-logo-img {
+	max-height: 50px;
+}
+
+/* Editor/Updater: preview column and image */
+.preview-col {
+	overflow: hidden;
+}
+
+.preview-col-updater {
+	max-height: 50vh;
+}
+
+.preview-col-editor {
+	max-height: 200px;
+}
+
+.preview-img {
+	margin-top: 10px;
+}
+
+.preview-img-updater {
+	max-width: 500px;
+}
+
+.preview-img-editor {
+	max-height: 200px;
+}
+
+/* Language tag input (editor & updater) */
+.tag-col-input {
+	max-width: 200px;
+}
+
+/* Project table thumbnail (editor) */
+.project-thumb-table-img {
+	max-width: 100px;
+}

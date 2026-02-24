@@ -2,7 +2,7 @@
 
 
 <main class="form-signin container d-flex flex-row align-items-center justify-content-center p-4">
-	<form action="<?= base_url('validate') ?>" method="post" id="loginForm" class="w-50" style="min-width: 0;">
+	<form action="<?= base_url('validate') ?>" method="post" id="loginForm" class="w-50 login-form-flex">
 		<input type="hidden" name="data" />
 
 		<h1 class="h3 mb-3 fw-normal">Sign In</h1>
@@ -41,10 +41,9 @@
 	</form>
 	<aside class="w-75 mx-2 text-center">
 		<h3 class="mb-3">Welcome to <img
-				class="mb-4 img-fluid"
+				class="mb-4 img-fluid login-welcome-img"
 				src="<?= base_url('/assets/icons/night.png') ?>"
-				alt=""
-				style="max-width: 50%;" />
+				alt="" />
 		</h3>
 		<p>A simple message board for users to share their thoughts and ideas.</p>
 		<p>Login or create an account to get started.</p>
@@ -52,79 +51,10 @@
 </main>
 
 <script>
-	let switcher = true;
-
-	document.getElementById("btnReg").addEventListener("click", function() {
-		if (switcher) {
-			register();
-			switcher = false;
-		} else if (!switcher) {
-			cancel();
-			switcher = true;
-		}
-	});
-
-	function register() {
-		btn_change = document.getElementById("btnLogin");
-		btn_change.value = "Register";
-
-		btn_reg = document.getElementById("btnReg");
-		btn_reg.innerText = "Cancel";
-
-		form_connect = document.getElementById("loginForm");
-		form_connect.action = "register";
-
-		form = document.getElementById("emailDiv");
-		chk_pw = document.getElementById("pwDiv");
-
-		form.appendChild(createDiv("name", "text", "Name"));
-		chk_pw.appendChild(
-			createDiv("check_password", "password", "Confirm Password"),
-		);
-	}
-
-	function cancel() {
-		btn_change = document.getElementById("btnLogin");
-		btn_change.value = "Sign in";
-
-		btn_reg = document.getElementById("btnReg");
-		btn_reg.innerText = "Register";
-
-		form_connect = document.getElementById("loginForm");
-		form_connect.action = "<?= base_url('validate') ?>";
-
-		form = document.getElementById("emailDiv");
-		chk_pw = document.getElementById("pwDiv");
-
-		form.removeChild(form.lastChild);
-		chk_pw.removeChild(chk_pw.lastChild);
-	}
-
-	function createInput(name = "", type = "") {
-		newInput = document.createElement("input");
-		newInput.type = type;
-		newInput.name = name;
-		newInput.classList.add("form-control");
-		newInput.placeholder = name.charAt(0).toUpperCase() + name.slice(1);
-		return newInput;
-	}
-
-	function createLabel(name = "") {
-		newLabel = document.createElement("label");
-		newLabel.for = name;
-		newLabel.innerText = name.charAt(0).toUpperCase() + name.slice(1);
-		return newLabel;
-	}
-
-	function createDiv(name = "", type = "", label_name = "") {
-		newDiv = document.createElement("div");
-		newDiv.classList.add("form-floating", "my-2");
-
-		newDiv.appendChild(createInput(name, type));
-		newDiv.appendChild(createLabel(label_name));
-		return newDiv;
-	}
-	// show toasts based on server-side flashdata (CodeIgniter)
+	window.CRUD_VALIDATE_URL = <?= json_encode(base_url('validate')) ?>;
+</script>
+<script src="<?= base_url('js/crud/login.js') ?>"></script>
+<script>
 	document.addEventListener('DOMContentLoaded', function() {
 		<?php if ($this->session->flashdata('success')): ?>
 				(function() {

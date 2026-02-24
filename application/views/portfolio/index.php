@@ -93,8 +93,7 @@
                                     <img
                                         src="<?= base_url($skill['logo']) ?>"
                                         alt="<?= htmlspecialchars($skill['language']) ?>"
-                                        style="max-height: 50px"
-                                        class="img-fluid m-1" />
+                                        class="img-fluid m-1 skill-logo-img" />
                                 </div>
                                 <div class="badge-flip-back">
                                     <div class="skill-progress-container d-flex flex-column align-items-center justify-content-center p-2 gap-2">

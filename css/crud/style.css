@@ -154,3 +154,46 @@ header#header-menu {
 	font-style: italic;
 	font-size: 0.9rem;
 }
+
+/* Login (login/index) */
+.login-form-flex {
+	min-width: 0;
+}
+
+.login-welcome-img {
+	max-width: 50%;
+}
+
+@media (max-width: 768px) {
+	.form-signin {
+		display: flex !important;
+		flex-direction: column-reverse !important;
+	}
+	.form-signin .login-form-flex,
+	.form-signin aside {
+		width: 100% !important;
+		max-width: 100%;
+	}
+	.form-signin aside {
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 1rem;
+	}
+}
+
+/* Thread list cards (content, history, search) */
+.thread-card {
+	display: block;
+}
+
+.thread-card-recent {
+	min-height: 15vh;
+}
+
+.thread-card-history {
+	min-height: 20vh;
+}
+
+.thread-card-search {
+	max-height: 20vh;
+}

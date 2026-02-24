@@ -24,7 +24,7 @@
         <h1>Recent Threads</h1>
         <article id="cards_recent">
             <?php foreach ($threads as $thread): ?>
-                <a class="card mb-3 mx-5" style="min-height: 15vh;" href="<?= base_url($thread['slug']) ?>">
+                <a class="card mb-3 mx-5 thread-card thread-card-recent" href="<?= base_url($thread['slug']) ?>">
 
                     <div class="card-body mb-4">
                         <div class="row">

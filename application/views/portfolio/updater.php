@@ -25,15 +25,15 @@
                     <input type="file" name="image" id="image" accept="image/*" class='form-control mx-3'>
                     <small class='form-text text-muted mx-3 mb-3'>Supported formats: JPG, PNG, GIF (Max 5MB)</small>
                 </div>
-                <div class="col d-flex flex-column" style="max-height: 50vh; overflow: hidden;">
-                    <img id='preview' src="<?= base_url('assets/images/' . $project['img']) ?>" alt="" class="img-fluid mx-auto" style="max-width: 500px; margin-top: 10px;">
+                <div class="col d-flex flex-column preview-col preview-col-updater">
+                    <img id='preview' src="<?= base_url('assets/images/' . $project['img']) ?>" alt="" class="img-fluid mx-auto preview-img preview-img-updater">
                 </div>
             </div>
 
             <!-- Another seaparate group just for adding tags of language used for the project -->
             <div id="Ptags">
                 <label for="language" class="form-label d-block mx-3">Language Used</label>
-                <input type="text" name="language" id="language0" class="tagCol form-control ms-3 my-2 d-inline-flex" style="max-width: 200px;">
+                <input type="text" name="language" id="language0" class="tagCol form-control ms-3 my-2 d-inline-flex tag-col-input">
                 <input type="button" value="Add Language" class="btn btn-secondary d-block mx-3 my-2" id="addLangBtn">
                 <input type="button" value="Remove Language" class="btn btn-danger d-block mx-3 my-2" id="removeLangBtn">
                 <input type="hidden" name="tag_list" id="tag_list" value="">
@@ -70,8 +70,7 @@
         addTag.type = 'text';
         addTag.name = 'language';
         addTag.id = 'language' + (count + 1);
-        addTag.className = 'tagCol form-control d-inline-flex ms-3 my-2';
-        addTag.style.maxWidth = '200px';
+        addTag.className = 'tagCol form-control d-inline-flex ms-3 my-2 tag-col-input';
         document.getElementById('Ptags').insertBefore(addTag, document.getElementById('addLangBtn'));
         count++;
     });

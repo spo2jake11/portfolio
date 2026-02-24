@@ -5,7 +5,7 @@
          <h3>Search Result</h3>
          <article id="cards_recent" class="mt-5">
              <?php foreach ($threads as $thread): ?>
-                 <a class="card mb-3 mx-5" style="max-height: 20vh;" href="<?= base_url($thread['slug']) ?>">
+                 <a class="card mb-3 mx-5 thread-card thread-card-search" href="<?= base_url($thread['slug']) ?>">
 
                      <div class="card-body mb-4">
                          <div class="row">
