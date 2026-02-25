@@ -4,7 +4,7 @@
      <section class="container my-2" id="recent">
 
          <?php if (empty($threads)): ?>
-             <h1>You have no posts yet.</h1>
+             <h3 class="text-center">You have no posts yet. Create or join other threads.</h3>
 
 
 
@@ -12,7 +12,7 @@
              <h1>Your Posts</h1>
              <article id="cards_recent">
                  <?php foreach ($threads as $thread): ?>
-                     <a class="card mb-3 mx-5 thread-card thread-card-history" href="<?= base_url($thread['slug']) ?>">
+                     <a class="card mb-3 mx-5 thread-card thread-card-history" href="<?= base_url('post/'.$thread['slug']) ?>">
 
                          <div class="card-body mb-4">
                              <div class="row">

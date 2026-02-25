@@ -7,7 +7,8 @@
                     class="form-control "
                     id="floatingInput"
                     name="title"
-                    placeholder="name@example.com" />
+                    placeholder="name@example.com" 
+                    required/>
                 <label for="floatingInput">Title</label>
             </div>
             <div class="form-floating my-2">
@@ -24,7 +25,7 @@
         <h1>Recent Threads</h1>
         <article id="cards_recent">
             <?php foreach ($threads as $thread): ?>
-                <a class="card mb-3 mx-5 thread-card thread-card-recent" href="<?= base_url($thread['slug']) ?>">
+                <a class="card mb-3 mx-5 thread-card thread-card-recent shadow" href="<?= base_url('post/'.$thread['slug']) ?>">
 
                     <div class="card-body mb-4">
                         <div class="row">

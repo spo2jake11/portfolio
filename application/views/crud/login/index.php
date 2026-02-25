@@ -5,9 +5,9 @@
 	<form action="<?= base_url('validate') ?>" method="post" id="loginForm" class="w-50 login-form-flex">
 		<input type="hidden" name="data" />
 
-		<h1 class="h3 mb-3 fw-normal">Sign In</h1>
+		<h1 class="h3 mb-3 fw-normal" id="signin_h">Sign In</h1>
 
-		<div class="form-floating my-2" id="emailDiv">
+		<div class="form-floating my-2 shadow" id="emailDiv">
 			<input
 				type="email"
 				class="form-control "
@@ -17,7 +17,7 @@
 			<label for="floatingInput">Email address</label>
 		</div>
 
-		<div class="form-floating my-2" id="pwDiv">
+		<div class="form-floating my-2 shadow" id="pwDiv">
 			<input
 				type="password"
 				class="form-control"
@@ -39,14 +39,14 @@
 
 		<p class="mt-5 mb-3 text-body-secondary text-center">© 2026</p>
 	</form>
-	<aside class="w-75 mx-2 text-center">
-		<h3 class="mb-3">Welcome to <img
+	<aside class="w-75 mx-2 mb-5 text-center">
+		<h3 class="mb-3 fs-2">Welcome to <img
 				class="mb-4 img-fluid login-welcome-img"
 				src="<?= base_url('/assets/icons/night.png') ?>"
 				alt="" />
 		</h3>
-		<p>A simple message board for users to share their thoughts and ideas.</p>
-		<p>Login or create an account to get started.</p>
+		<p class="fs-5">A simple message board for users to share their thoughts and ideas.</p>
+		<p class="fs-4">Login or create an account to get started.</p>
 	</aside>
 </main>
 

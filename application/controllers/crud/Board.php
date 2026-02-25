@@ -112,7 +112,7 @@ class Board extends CI_Controller
         } else {
             $this->session->set_flashdata('error', 'Failed to post comment. Please try again.');
         }
-        redirect($thread->slug);
+        redirect('post/' . $thread->slug);
     }
 
     public function add_reply()
@@ -204,7 +204,7 @@ class Board extends CI_Controller
         $reply = $this->Boards->get_reply($reply_id);
         if (empty($reply) || (int) $reply['user_id'] !== (int) $this->session->userdata('id')) {
             $thread = $this->Boards->get_thread_by_id($thread_id);
-            redirect($thread ? $thread->slug : 'home');
+            redirect('post/' . $thread->slug);
             return;
         }
         if ($this->Boards->delete_reply($reply_id)) {
@@ -213,7 +213,7 @@ class Board extends CI_Controller
             $this->session->set_flashdata('error', 'Failed to remove reply.');
         }
         $thread = $this->Boards->get_thread_by_id($thread_id);
-        redirect($thread ? $thread->slug : 'home');
+        redirect('post/' . $thread->slug);
     }
 
     public function delete_comment($comment_id, $thread_id)
@@ -225,7 +225,7 @@ class Board extends CI_Controller
         $comment = $this->Boards->get_comment($comment_id);
         if (empty($comment) || (int) $comment['user_id'] !== (int) $this->session->userdata('id')) {
             $thread = $this->Boards->get_thread_by_id($thread_id);
-            redirect($thread ? $thread->slug : 'home');
+            redirect('post/' . $thread->slug);
             return;
         }
         if ($this->Boards->delete_comment($comment_id)) {
@@ -234,7 +234,7 @@ class Board extends CI_Controller
             $this->session->set_flashdata('error', 'Failed to remove comment.');
         }
         $thread = $this->Boards->get_thread_by_id($thread_id);
-        redirect($thread ? $thread->slug : 'home');
+        redirect('post/' . $thread->slug);
     }
 
     public function close_thread($thread_id)

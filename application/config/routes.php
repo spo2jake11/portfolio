@@ -72,9 +72,8 @@ $route['update_thread/(:num)'] = 'crud/board/update_thread/$1';
 $route['history/(:any)'] = 'crud/board/history/$1';
 $route['search'] = 'crud/board/search_threads';
 
-// Catch-all: resolve slugs to threads. Keep this at the end so it doesn't
-// override specific routes like 'search' or 'add_comment'.
-$route['(:any)'] = 'crud/board/open_thread/$1';
+
+$route['post/(:any)'] = 'crud/board/open_thread/$1';
 
 
 $route['404_override'] = '';

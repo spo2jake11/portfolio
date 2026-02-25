@@ -85,8 +85,12 @@ $can_post = $thread_active === 1 && $this->session->userdata('is_logged_in');
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <div class="content">
-                                <p class="mt-0 mb-2"><?= nl2br($reply['content']) ?></p>
+                            <div class="content my-2">
+                                <?php if ($reply['active'] == 0): ?>
+                                    <p class="mt-0 mb-2">Reply has been deleted.</p>
+                                <?php else: ?>
+                                    <p class="mt-0 mb-2"><?= nl2br($reply['content']) ?></p>
+                                <?php endif; ?>
                             </div>
                             <?php
                             // Recursively display nested replies if they exist
@@ -126,7 +130,11 @@ $can_post = $thread_active === 1 && $this->session->userdata('is_logged_in');
                             </div>
                         </div>
                         <div class="content">
-                            <p class="mt-1 mb-2"><?= nl2br($comment['content']) ?></p>
+                            <?php if ($comment['active'] == 0): ?>
+                                <p class="mt-1 mb-2">Comment has be deleted.</p>
+                            <?php else: ?>
+                                <p class="mt-1 mb-2"><?= nl2br($comment['content']) ?></p>
+                            <?php endif; ?>
                         </div>
                         <?php if ($can_post): ?>
                             <article class="comment w-75" id="input_reply_to_comment">

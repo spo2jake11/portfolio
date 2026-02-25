@@ -28,7 +28,20 @@ function parseNum(s) {
 
 function formatResult(n) {
 	if (!Number.isFinite(n)) return "Error";
-	if (Number.isInteger(n)) return String(n);
+	if (Number.isInteger(n)) {
+		// For integers that are 1 followed by more than 6 zeros (e.g., 100000000000000000000),
+		// show them in a compact exponent form like "1.e+19" (19 zeros after 1).
+		if (n !== 0) {
+			const sign = n < 0 ? "-" : "";
+			const absStr = Math.abs(n).toString();
+			const match = absStr.match(/^1*(0{7,})$/);
+			if (match) {
+				const zeros = match[1].length; // number of zeros after 1
+				return sign + "1.e+" + zeros;
+			}
+		}
+		return String(n);
+	}
 	const s = n.toFixed(10).replace(/\.?0+$/, "");
 	return s;
 }
@@ -52,7 +65,7 @@ function doEquals() {
 		if (!Number.isFinite(result)) {
 			mainDisplay.value = "Error";
 			return;
-		}
+		}	
 		const formatted = formatResult(result);
 		previousOperator = operator;
 		previousSecondOperand = parseNum(second);

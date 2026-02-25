@@ -71,7 +71,7 @@ class Boards extends CI_Model
 
     public function get_comments($thread_id)
     {
-        $query = $this->db_crud->select('comments.id AS id, comments.content AS content, comments.created_at AS comment_time, comments.updated_at AS updated_at, users.username AS username, comments.user_id AS user_id')
+        $query = $this->db_crud->select('comments.id AS id, comments.content AS content, comments.created_at AS comment_time, comments.updated_at AS updated_at, users.username AS username, comments.user_id AS user_id, comments.active AS active')
             ->from('comments')
             ->join('users', 'comments.user_id = users.id')
             ->where('comments.thread_id', $thread_id)
@@ -82,11 +82,10 @@ class Boards extends CI_Model
 
     public function get_replies($comment_id)
     {
-        $query = $this->db_crud->select('replies.id AS id, replies.content AS content, replies.created_at AS created_at, replies.updated_at AS updated_at, users.username AS username, replies.user_id AS user_id')
+        $query = $this->db_crud->select('replies.id AS id, replies.content AS content, replies.created_at AS created_at, replies.updated_at AS updated_at, users.username AS username, replies.user_id AS user_id, replies.active AS active')
             ->from('replies')
             ->join('users', 'replies.user_id = users.id')
             ->where('replies.comment_id', $comment_id)
-            ->where('replies.active', 1)
             ->order_by('replies.created_at', 'DESC')
             ->get();
         return $query->result_array();
@@ -177,7 +176,7 @@ class Boards extends CI_Model
     {
         $this->db_crud->trans_begin();
         $this->db_crud->where('id', $comment_id)
-            ->update('comments', array('content' => 'Comment has been deleted', 'active' => 0));
+            ->update('comments', array('active' => 0));
         if ($this->db_crud->trans_status() === FALSE) {
             $this->db_crud->trans_rollback();
             return false;
